@@ -5,12 +5,12 @@ import type React from "react"
 import { createContext, useContext, useState, useEffect } from "react"
 
 const ThemeContext = createContext({
-  theme: "light",
+  theme: "dark",
   setTheme: (theme: string) => {},
 })
 
 export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
-  const [theme, setTheme] = useState("light")
+  const [theme, setTheme] = useState("dark")
 
   useEffect(() => {
     const storedTheme = localStorage.getItem("theme")

@@ -13,7 +13,7 @@ function NavLink({ href, children }: { href: string; children: React.ReactNode }
   return (
     <Link href={href} className="relative text-gray-300 hover:text-white transition-colors group">
       {children}
-      <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-cyan-500 transition-all duration-300 group-hover:w-full"></span>
+      <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-400 to-purple-600 transition-all duration-300 group-hover:w-full"></span>
     </Link>
   )
 }
@@ -75,7 +75,7 @@ export default function Header() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="hidden md:flex items-center space-x-8"
           >
-            <NavLink href="#home">Home</NavLink>
+            <NavLink href="/">Home</NavLink>
             <NavLink href="#projects">Projects</NavLink>
             <NavLink href="#skills">Skills</NavLink>
             <NavLink href="#contact">Contact</NavLink>
@@ -142,16 +142,16 @@ export default function Header() {
               </Button>
             </div>
             <div className="flex flex-col items-center justify-center space-y-8 flex-1">
-              <MobileNavLink href="#home" onClick={() => setMobileMenuOpen(false)}>
+              <MobileNavLink href="/" onClick={() => setMobileMenuOpen(false)}>
                 Home
               </MobileNavLink>
-              <MobileNavLink href="#projects" onClick={() => setMobileMenuOpen(false)}>
+              <MobileNavLink href="/projects" onClick={() => setMobileMenuOpen(false)}>
                 Projects
               </MobileNavLink>
-              <MobileNavLink href="#skills" onClick={() => setMobileMenuOpen(false)}>
+              <MobileNavLink href="/skills" onClick={() => setMobileMenuOpen(false)}>
                 Skills
               </MobileNavLink>
-              <MobileNavLink href="#contact" onClick={() => setMobileMenuOpen(false)}>
+              <MobileNavLink href="/contact" onClick={() => setMobileMenuOpen(false)}>
                 Contact
               </MobileNavLink>
               {theme === "dark" ? (

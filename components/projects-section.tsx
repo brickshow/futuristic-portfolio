@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
-const projects = {
+export const projects = {
   websites: [
     {
       title: "E-Commerce Platform",
@@ -39,16 +39,18 @@ interface Project {
 }
 
 function ProjectGrid({ projects }: { projects: any[] }) {
+  // Only show up to 6 projects by default
+  const visibleProjects = projects.slice(0, 6)
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {projects.map((project, index) => (
+      {visibleProjects.map((project, index) => (
         <ProjectCard key={project.title} project={project} index={index} />
       ))}
     </div>
   )
 }
 
-function ProjectCard({ project, index }: { project: Project; index: number }) {
+export function ProjectCard({ project, index }: { project: Project; index: number }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -69,9 +71,11 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
             />
           </motion.div>
           <div className="absolute bottom-0 left-0 right-0 p-4 z-20 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-            <Button size="sm" className="bg-cyan-500 hover:bg-cyan-600 text-white">
-              View Project
-            </Button>
+            <a href="/projects" className="block">
+              <Button size="sm" className="bg-cyan-500 hover:bg-cyan-600 text-white w-full transition transform hover:scale-105 shadow-lg hover:shadow-cyan-500/30">
+                View Project
+              </Button>
+            </a>
           </div>
         </div>
         <CardContent className="p-4">
@@ -116,6 +120,17 @@ export default function ProjectsSection() {
 
         <div className="max-w-5xl mx-auto">
           <ProjectGrid projects={projects.websites} />
+          {/* Always show the Show All button, even after refresh */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="flex justify-center mt-8"
+          >
+            <a href="/projects" className="px-6 py-2 rounded bg-cyan-500 text-white hover:bg-cyan-600 transition transform hover:scale-105 shadow-lg hover:shadow-cyan-500/30">
+              Show All
+            </a>
+          </motion.div>
         </div>
       </div>
     </section>

@@ -7,8 +7,8 @@ import { Button } from "@/components/ui/button"
 export default function HeroSection() {
   return (
     <section id="home" className="min-h-screen flex items-center justify-center pt-20">
-      <div className="container mx-auto px-4">
-        <div className="flex flex-col md:flex-row items-center">
+      <div className="container mx-auto px-4 flex flex-col items-center justify-center min-h-[70vh]">
+        <div className="flex flex-col md:flex-row items-center justify-center w-full">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -41,7 +41,7 @@ export default function HeroSection() {
               className="flex flex-wrap gap-4 justify-center md:justify-start"
             >
               <Button className="bg-gradient-to-r from-purple-500 to-cyan-600 hover:from-cyan-600 hover:to-cyan-700 text-white border-none">
-                <a href="#projects">View Projects</a>
+                <a href="/projects">View Projects</a>
               </Button>
               <Button variant="outline" className="bg-transparent border-cyan-500 text-cyan-400 hover:bg-cyan-950/30">
                 <a href="#contact">Contact Me</a>

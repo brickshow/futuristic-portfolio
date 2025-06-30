@@ -4,6 +4,7 @@ import type React from "react"
 
 import Link from "next/link"
 import { Github } from "lucide-react"
+import { motion } from "framer-motion"
 
 function SocialLink({ icon, href }: { icon: React.ReactNode; href: string }) {
   return (
@@ -101,7 +102,12 @@ function Facebook(props: any) {
 
 export default function Footer() {
   return (
-    <footer className="relative z-10 border-t border-gray-800 py-8">
+    <motion.footer
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, delay: 0.4 }}
+      className="relative z-10 border-t border-gray-800 py-8"
+    >
       <div className="container mx-auto px-4 text-center">
         <p className="text-gray-400">© {new Date().getFullYear()} Brix Lampago. All rights reserved.</p>
         <div className="flex justify-center space-x-6 mt-4">
@@ -112,6 +118,6 @@ export default function Footer() {
           <SocialLink icon={<Facebook className="h-5 w-5" />} href="https://www.facebook.com/Brkshow" />
         </div>
       </div>
-    </footer>
+    </motion.footer>
   )
 }
