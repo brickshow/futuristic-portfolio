@@ -7,27 +7,54 @@ import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { url } from "inspector"
 
 export const projects = {
   websites: [
     {
-      title: "E-Commerce Platform",
-      description: "A modern e-commerce solution with real-time inventory management",
-      tech: ["React", "Node.js", "MongoDB"],
-      image: "/placeholder.svg?height=300&width=500",
+      title: "Grand Vista Hotel",
+      description: "Experience Luxury Beyond Compare",
+      tech: ["React", "Tailwind CSS"],
+      image: "/Images/bg.png",
+      url: "https://grandvistahotel.vercel.app/"
     },
     {
-      title: "Portfolio Generator",
-      description: "Create stunning portfolios with just a few clicks",
-      tech: ["Next.js", "Tailwind CSS", "Supabase"],
-      image: "/placeholder.svg?height=300&width=500",
+      title: "Sequoia Marketing Solutions",
+      description: "Transform Your Idea in Digital",
+      tech: ["React.js", "Tailwind CSS",],
+      image: "/Images/sequoia.png",
+      url: "https://www.sequoiamarketingsolutions.com/",
     },
-    {
-      title: "Analytics Dashboard",
-      description: "Real-time data visualization for business metrics",
-      tech: ["React", "D3.js", "Firebase"],
-      image: "/placeholder.svg?height=300&width=500",
-    },
+    // {
+    //   title: "Analytics Dashboard",
+    //   description: "Real-time data visualization for business metrics",
+    //   tech: ["React", "D3.js", "Firebase"],
+    //   image: "/placeholder.svg?height=300&width=500",
+    // },
+    // {
+    //   title: "Analytics Dashboard",
+    //   description: "Real-time data visualization for business metrics",
+    //   tech: ["React", "D3.js", "Firebase"],
+    //   image: "/placeholder.svg?height=300&width=500",
+    // },
+    // {
+    //   title: "Analytics Dashboard",
+    //   description: "Real-time data visualization for business metrics",
+    //   tech: ["React", "D3.js", "Firebase"],
+    //   image: "/placeholder.svg?height=300&width=500",
+    // },
+    // {
+    //   title: "Analytics Dashboard",
+    //   description: "Real-time data visualization for business metrics",
+    //   tech: ["React", "D3.js", "Firebase"],
+    //   image: "/placeholder.svg?height=300&width=500",
+    // },
+    //    {
+    //   title: "Analytics Dashboard",
+    //   description: "Real-time data visualization for business metrics",
+    //   tech: ["React", "D3.js", "Firebase"],
+    //   image: "/placeholder.svg?height=300&width=500",
+    // },
   ],
 }
 
@@ -36,20 +63,23 @@ interface Project {
   description: string;
   tech: string[];
   image: string;
+  url?: string;
 }
 
-function ProjectGrid({ projects }: { projects: any[] }) {
+export function ProjectGrid({ projects }: { projects: any[] }) {
   // Only show up to 6 projects by default
-  const visibleProjects = projects.slice(0, 6)
+  const visibleProjects = projects.slice(0, 6);
+  
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {visibleProjects.map((project, index) => (
-        <ProjectCard key={project.title} project={project} index={index} />
-      ))}
+    <div className="flex justify-center">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {visibleProjects.map((project, index) => (
+          <ProjectCard key={project.title} project={project} index={index} />
+        ))}
+      </div>
     </div>
-  )
+  );
 }
-
 export function ProjectCard({ project, index }: { project: Project; index: number }) {
   return (
     <motion.div
@@ -71,7 +101,7 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
             />
           </motion.div>
           <div className="absolute bottom-0 left-0 right-0 p-4 z-20 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-            <a href="/projects" className="block">
+            <a href={project.url} target="_blank" rel="noopener noreferrer" className="block">
               <Button size="sm" className="bg-cyan-500 hover:bg-cyan-600 text-white w-full transition transform hover:scale-105 shadow-lg hover:shadow-cyan-500/30">
                 View Project
               </Button>
@@ -134,5 +164,6 @@ export default function ProjectsSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }
+
