@@ -25,12 +25,13 @@ export const projects = {
       image: "/Images/sequoia.png",
       url: "https://www.sequoiamarketingsolutions.com/",
     },
-    // {
-    //   title: "Analytics Dashboard",
-    //   description: "Real-time data visualization for business metrics",
-    //   tech: ["React", "D3.js", "Firebase"],
-    //   image: "/placeholder.svg?height=300&width=500",
-    // },
+    {
+      title: "DevAxis Roadmap",
+      description: "Automated Dev Task Management",
+      tech: ["React", "Tailwind CSS", "Supabase"],
+      image: "/Images/deaxis.png",
+      url:"https://devaxisroadmap.vercel.app/"
+    },
     // {
     //   title: "Analytics Dashboard",
     //   description: "Real-time data visualization for business metrics",
